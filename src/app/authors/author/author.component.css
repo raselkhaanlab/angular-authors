@@ -1,0 +1,21 @@
+.card {
+    width: 300px;
+}
+.fav-icon-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .fav-icon {
+    cursor: pointer;
+    color:bisque;
+  }
+  .favorate {
+      color: rgb(47, 255, 109);
+  }
+  .info {
+    word-wrap:break-word;
+  }
+  .info-span {
+    font-size: 1rem;
+    font-weight: bold;
+  }

@@ -1,0 +1,16 @@
+<mat-card class="card">
+    <mat-card-content>
+       <div class="fav-icon-container">
+          <ng-container *ngIf="item.isFavorate; then fav; else nonFav "></ng-container>
+          <ng-template #fav>
+             <mat-icon class="fav-icon favorate" (click)="handleChangeFavarite(item)">favorite</mat-icon>
+         </ng-template>
+         <ng-template #nonFav>
+          <mat-icon class="fav-icon" (click)="handleChangeFavarite(item)" >favorite_border</mat-icon>
+      </ng-template>
+       </div>
+       <p class="info"><span class="info-span">name :</span> {{item.name}} </p>
+       <p class="info"><span class="info-span" >Bio :</span> {{item.bio}}</p>
+       <p class='info'><span class="info-span" >Url :</span> <a target="_blank" [href]="item.link">{{item.link}}</a></p>
+    </mat-card-content>
+  </mat-card>

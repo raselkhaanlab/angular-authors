@@ -1,0 +1,22 @@
+<p class="title">Authors list</p>
+
+  <ng-container *ngIf="items.length;then loadComplete;else loading;"></ng-container>
+  <ng-template #loading>
+      <p fxLayout="row wrap" fxLayoutAlign="center center"  class="loading">
+         loading ...
+      </p>
+  </ng-template >
+  <ng-template #loadComplete>
+   <div fxLayout="row wrap" fxLayoutAlign="center stretch" style="gap: 10px;">
+   <app-author *ngFor="let item of items; let i=index" [item]="item" (changeFavarite)="handleaddOrRemoveFromFavorateList($event,i )" ></app-author>
+   </div>
+   <mat-paginator
+   (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [showFirstLastButtons]="showFirstLastButtons"
+    [pageIndex]="pageIndex"
+    aria-label="Select page">
+   </mat-paginator>
+</ng-template>
+ 
