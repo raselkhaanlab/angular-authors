@@ -1,6 +1,9 @@
 <p class="title">Authors list</p>
-
-  <ng-container *ngIf="items.length;then loadComplete;else loading;"></ng-container>
+   <div *ngIf="isError">
+       <P class="error-title">{{error.name}}</P>
+      <P class="error-message">{{error.message}}</P>
+   </div>
+  <ng-container *ngIf="isLoading;then loading ;else loadComplete;"></ng-container>
   <ng-template #loading>
       <p fxLayout="row wrap" fxLayoutAlign="center center"  class="loading">
          loading ...
@@ -11,6 +14,7 @@
    <app-author *ngFor="let item of items; let i=index" [item]="item" (changeFavarite)="handleaddOrRemoveFromFavorateList($event,i )" ></app-author>
    </div>
    <mat-paginator
+   *ngIf="items.length && error !==true"
    (page)="handlePageEvent($event)"
     [length]="length"
     [pageSize]="pageSize"

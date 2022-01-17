@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { IAuthors,IAuthor } from './authors-model';
@@ -16,8 +17,11 @@ export class AuthorsComponent implements OnInit {
   pageIndex:number = 0;
   showFirstLastButtons:boolean = true;
   items:IAuthor[] = [];
-
+  isLoading:boolean = false;
+  isError:boolean = false;
+  error:Partial<HttpErrorResponse> = {} ;
   handlePageEvent(event: PageEvent) {
+    
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
@@ -34,6 +38,7 @@ export class AuthorsComponent implements OnInit {
   };
 
   getAuthors():void {
+    this.isLoading = true;
     this.authorService.getAuthors(this.pageSize,this.pageIndex).subscribe((data:IAuthors)=>{
       this.length = data.totalCount;
       this.pageSize = data.count;
@@ -50,6 +55,11 @@ export class AuthorsComponent implements OnInit {
           isFavorate:find?true:false
         }
       });
+      this.isLoading= false;
+    },(error:HttpErrorResponse)=>{
+      this.isLoading= false;
+      this.isError = true;
+      this.error = error;
     })
   }
 }
