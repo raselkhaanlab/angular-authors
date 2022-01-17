@@ -29,6 +29,7 @@ export class FavorateAuthorsComponent implements OnInit {
   handleaddOrRemoveFromFavorateList (item:IAuthor,index:number) {
     this.items[index].isFavorate = !this.items[index].isFavorate;
     this.items = this.authorService.setToFavorateAuthorsList(item).reverse();
+    this.length= this.items.length;
   };
 
   getAuthors():void {
