@@ -21,7 +21,6 @@ export class AuthorsComponent implements OnInit {
   isError:boolean = false;
   error:Partial<HttpErrorResponse> = {} ;
   handlePageEvent(event: PageEvent) {
-    
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;

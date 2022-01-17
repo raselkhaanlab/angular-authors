@@ -13,9 +13,42 @@
       color: rgb(47, 255, 109);
   }
   .info {
-    word-wrap:break-word;
+    /* word-wrap:break-word; */
+    display: flex;
+    align-items:flex-start;
+    text-align: left;
+    text-transform: capitalize;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(219, 212, 212, 0.733);
+    
   }
+  
   .info-span {
     font-size: 1rem;
-    font-weight: bold;
+    font-weight:500;
+    padding-right: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .info-span::after {
+    position: absolute;
+    padding: 0.1rem;
+    top:0;
+    left:-20%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(158, 209, 202, 0.192);;
+    content: '';
+    border-radius: 16px;
+  }
+  .info a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.72rem;
+    text-align: left;
+    text-decoration:none;
+  }
+  
